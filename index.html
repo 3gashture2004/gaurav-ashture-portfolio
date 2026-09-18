@@ -1,482 +1,590 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Gaurav Ashture | Manual Tester</title>
+    <title>Gaurav Ashture | Software Tester</title>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-      font-family: Arial, sans-serif;
-    }
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+            font-family: Arial, Helvetica, sans-serif;
+        }
 
-    body {
-      background: #0f172a;
-      color: #e2e8f0;
-      line-height: 1.6;
-    }
+        body {
+            background: #0f172a;
+            color: #e2e8f0;
+            line-height: 1.6;
+        }
 
-    header {
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 1000;
-      background: rgba(15, 23, 42, 0.95);
-      border-bottom: 1px solid #334155;
-    }
+        /* NAVBAR */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #111827;
+            padding: 15px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid #334155;
+        }
 
-    nav {
-      max-width: 1100px;
-      margin: auto;
-      padding: 18px 25px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+        nav .logo {
+            font-size: 22px;
+            font-weight: bold;
+            color: #38bdf8;
+        }
 
-    .logo {
-      font-size: 22px;
-      font-weight: bold;
-      color: #38bdf8;
-    }
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
 
-    nav ul {
-      display: flex;
-      list-style: none;
-      gap: 25px;
-    }
+        nav ul li a {
+            color: #e2e8f0;
+            text-decoration: none;
+            font-size: 15px;
+            transition: 0.3s;
+        }
 
-    nav a {
-      color: #e2e8f0;
-      text-decoration: none;
-      font-size: 15px;
-    }
+        nav ul li a:hover {
+            color: #38bdf8;
+        }
 
-    nav a:hover {
-      color: #38bdf8;
-    }
+        /* COMMON */
+        section {
+            padding: 100px 8%;
+        }
 
-    section {
-      max-width: 1100px;
-      margin: auto;
-      padding: 100px 25px;
-    }
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 40px;
+            color: #38bdf8;
+        }
 
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-    }
+        /* HOME */
+        #home {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding-top: 120px;
+        }
 
-    .hero-content {
-      max-width: 750px;
-    }
+        .home-content {
+            max-width: 750px;
+        }
 
-    .hero h1 {
-      font-size: 55px;
-      margin-bottom: 10px;
-    }
+        /* PROFILE PHOTO */
+        .profile-photo {
+            width: 170px;
+            height: 170px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid #38bdf8;
+            margin-bottom: 25px;
+            box-shadow: 0 0 25px rgba(56, 189, 248, 0.25);
+        }
 
-    .hero h1 span {
-      color: #38bdf8;
-    }
+        .home-content h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
 
-    .hero h2 {
-      color: #94a3b8;
-      font-size: 25px;
-      margin-bottom: 20px;
-    }
+        .home-content h1 span {
+            color: #38bdf8;
+        }
 
-    .hero p {
-      color: #cbd5e1;
-      font-size: 18px;
-      margin-bottom: 30px;
-    }
+        .home-content h2 {
+            font-size: 25px;
+            color: #cbd5e1;
+            margin-bottom: 20px;
+        }
 
-    .buttons a {
-      display: inline-block;
-      padding: 12px 22px;
-      margin-right: 10px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: bold;
-    }
+        .home-content p {
+            color: #94a3b8;
+            font-size: 17px;
+            margin-bottom: 30px;
+        }
 
-    .primary {
-      background: #38bdf8;
-      color: #0f172a;
-    }
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            margin: 5px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
 
-    .secondary {
-      border: 1px solid #38bdf8;
-      color: #38bdf8;
-    }
+        .primary-btn {
+            background: #38bdf8;
+            color: #0f172a;
+        }
 
-    .section-title {
-      font-size: 35px;
-      margin-bottom: 35px;
-      color: #38bdf8;
-    }
+        .primary-btn:hover {
+            background: #7dd3fc;
+        }
 
-    .about-box {
-      background: #1e293b;
-      padding: 30px;
-      border-radius: 12px;
-      border: 1px solid #334155;
-    }
+        .secondary-btn {
+            border: 1px solid #38bdf8;
+            color: #38bdf8;
+        }
 
-    .skills {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 15px;
-    }
+        .secondary-btn:hover {
+            background: #38bdf8;
+            color: #0f172a;
+        }
 
-    .skill {
-      background: #1e293b;
-      padding: 18px;
-      border-radius: 8px;
-      text-align: center;
-      border: 1px solid #334155;
-    }
+        /* ABOUT */
+        .about-container {
+            max-width: 900px;
+            margin: auto;
+            text-align: center;
+        }
 
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-    }
+        .about-container p {
+            color: #cbd5e1;
+            font-size: 17px;
+        }
 
-    .project {
-      background: #1e293b;
-      padding: 25px;
-      border-radius: 12px;
-      border: 1px solid #334155;
-    }
+        /* SKILLS */
+        .skills-container {
+            max-width: 900px;
+            margin: auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
 
-    .project h3 {
-      color: #38bdf8;
-      margin-bottom: 12px;
-    }
+        .skill {
+            background: #1e293b;
+            border: 1px solid #334155;
+            padding: 12px 20px;
+            border-radius: 25px;
+            color: #e2e8f0;
+            transition: 0.3s;
+        }
 
-    .project ul {
-      padding-left: 20px;
-      color: #cbd5e1;
-    }
+        .skill:hover {
+            border-color: #38bdf8;
+            color: #38bdf8;
+            transform: translateY(-3px);
+        }
 
-    .contact-box {
-      background: #1e293b;
-      padding: 30px;
-      border-radius: 12px;
-      text-align: center;
-      border: 1px solid #334155;
-    }
+        /* PROJECTS */
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            max-width: 1100px;
+            margin: auto;
+        }
 
-    .contact-box p {
-      margin: 12px 0;
-    }
+        .project-card {
+            background: #1e293b;
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid #334155;
+            transition: 0.3s;
+        }
 
-    .contact-box a {
-      color: #38bdf8;
-      text-decoration: none;
-    }
+        .project-card:hover {
+            transform: translateY(-7px);
+            border-color: #38bdf8;
+        }
 
-    .contact-box a:hover {
-      text-decoration: underline;
-    }
+        .project-card h3 {
+            color: #38bdf8;
+            margin-bottom: 15px;
+        }
 
-    footer {
-      text-align: center;
-      padding: 25px;
-      border-top: 1px solid #334155;
-      color: #94a3b8;
-    }
+        .project-card p {
+            color: #cbd5e1;
+            margin-bottom: 15px;
+        }
 
-    @media (max-width: 700px) {
-      nav ul {
-        display: none;
-      }
+        .project-card ul {
+            padding-left: 20px;
+            color: #94a3b8;
+        }
 
-      .hero h1 {
-        font-size: 40px;
-      }
+        /* CERTIFICATIONS */
+        .certifications {
+            max-width: 800px;
+            margin: auto;
+            text-align: center;
+        }
 
-      .hero h2 {
-        font-size: 20px;
-      }
-    }
-  </style>
+        .cert-box {
+            background: #1e293b;
+            border: 1px solid #334155;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+        }
+
+        .cert-box h3 {
+            color: #38bdf8;
+        }
+
+        /* RESUME */
+        .resume-section {
+            text-align: center;
+        }
+
+        .resume-section p {
+            color: #94a3b8;
+            margin-bottom: 20px;
+        }
+
+        /* CONTACT */
+        .contact-container {
+            max-width: 800px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .contact-item {
+            margin: 15px 0;
+            font-size: 17px;
+        }
+
+        .contact-item a {
+            color: #38bdf8;
+            text-decoration: none;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #111827;
+            color: #94a3b8;
+            border-top: 1px solid #334155;
+        }
+
+        /* MOBILE */
+        @media (max-width: 800px) {
+
+            nav {
+                padding: 15px 5%;
+            }
+
+            nav ul {
+                gap: 10px;
+            }
+
+            nav ul li a {
+                font-size: 12px;
+            }
+
+            .home-content h1 {
+                font-size: 36px;
+            }
+
+            .home-content h2 {
+                font-size: 21px;
+            }
+
+            .projects-container {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 80px 5%;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
-<header>
-  <nav>
-    <div class="logo">Gaurav Ashture</div>
+    <!-- NAVBAR -->
+    <nav>
+        <div class="logo">GA</div>
 
-    <ul>
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
-</header>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#certifications">Certifications</a></li>
+            <li><a href="#resume">Resume</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
 
 
-<!-- HOME -->
-<section id="home" class="hero">
+    <!-- HOME -->
+    <section id="home">
 
-  <div class="hero-content">
+        <div class="home-content">
 
-    <h1>Hello, I'm <span>Gaurav</span></h1>
+            <!-- PROFILE PHOTO -->
+            <img
+                src="profile.jpg"
+                alt="Gaurav Ashture"
+                class="profile-photo"
+            >
 
-    <h2>Software Tester | Manual Tester</h2>
+            <h1>Hello, I'm <span>Gaurav Ashture</span></h1>
 
-    <p>
-      BCA graduate and aspiring Software Tester with hands-on experience
-      in manual testing, functional testing, regression testing,
-      API testing and defect reporting.
-    </p>
+            <h2>Software Tester | Manual Testing</h2>
 
-    <div class="buttons">
+            <p>
+                BCA Graduate and passionate Software Tester with hands-on
+                experience in Manual Testing, API Testing and Agile/Scrum.
+                Interested in finding defects and improving software quality.
+            </p>
 
-      <a href="#projects" class="primary">
-        View Projects
-      </a>
+            <a href="#projects" class="btn primary-btn">
+                View Projects
+            </a>
 
-      <!-- Keep resume.pdf in the same GitHub repository -->
-      <a href="resume.pdf" class="secondary" download>
-        Download Resume
-      </a>
+            <a href="resume.pdf" class="btn secondary-btn" download>
+                Download Resume
+            </a>
 
-    </div>
+        </div>
 
-  </div>
+    </section>
 
-</section>
 
+    <!-- ABOUT -->
+    <section id="about">
 
-<!-- ABOUT -->
-<section id="about">
+        <h2 class="section-title">About Me</h2>
 
-  <h2 class="section-title">About Me</h2>
+        <div class="about-container">
 
-  <div class="about-box">
+            <p>
+                I am a BCA graduate and Software Tester focused on Manual
+                Testing. I have practical experience in writing test cases,
+                executing test scenarios, identifying defects and preparing
+                bug reports.
+            </p>
 
-    <p>
-      I am a BCA graduate interested in Software Testing and Quality
-      Assurance. I have practical exposure to Manual Testing,
-      Functional Testing, Regression Testing, API Testing using Postman
-      and Agile/Scrum methodologies.
-    </p>
+            <br>
 
-    <br>
+            <p>
+                I have worked on projects such as Online Shopping Portal,
+                ShopperStack and JioMart. I also have experience with API
+                testing using Postman and working in an Agile/Scrum
+                environment.
+            </p>
 
-    <p>
-      My goal is to contribute to software quality by identifying
-      defects, validating requirements and ensuring a reliable
-      user experience.
-    </p>
+        </div>
 
-  </div>
+    </section>
 
-</section>
 
+    <!-- SKILLS -->
+    <section id="skills">
 
-<!-- SKILLS -->
-<section id="skills">
+        <h2 class="section-title">Testing Skills</h2>
 
-  <h2 class="section-title">Testing Skills</h2>
+        <div class="skills-container">
 
-  <div class="skills">
+            <div class="skill">Manual Testing</div>
+            <div class="skill">Functional Testing</div>
+            <div class="skill">Smoke Testing</div>
+            <div class="skill">Regression Testing</div>
+            <div class="skill">Integration Testing</div>
+            <div class="skill">System Testing</div>
+            <div class="skill">Usability Testing</div>
+            <div class="skill">Compatibility Testing</div>
+            <div class="skill">Ad-hoc Testing</div>
+            <div class="skill">API Testing</div>
+            <div class="skill">Postman</div>
+            <div class="skill">Test Case Design</div>
+            <div class="skill">Bug Reporting</div>
+            <div class="skill">SDLC</div>
+            <div class="skill">STLC</div>
+            <div class="skill">Agile / Scrum</div>
+            <div class="skill">Jira</div>
+            <div class="skill">AI Testing Tools</div>
 
-    <div class="skill">Manual Testing</div>
-    <div class="skill">Functional Testing</div>
-    <div class="skill">Smoke Testing</div>
-    <div class="skill">Regression Testing</div>
-    <div class="skill">System Testing</div>
-    <div class="skill">Integration Testing</div>
-    <div class="skill">Usability Testing</div>
-    <div class="skill">Compatibility Testing</div>
-    <div class="skill">API Testing</div>
-    <div class="skill">Postman</div>
-    <div class="skill">Jira</div>
-    <div class="skill">Agile / Scrum</div>
-    <div class="skill">Test Case Design</div>
-    <div class="skill">Defect Reporting</div>
-    <div class="skill">GitHub</div>
-    <div class="skill">AI Testing Tools</div>
+        </div>
 
-  </div>
+    </section>
 
-</section>
 
+    <!-- PROJECTS -->
+    <section id="projects">
 
-<!-- PROJECTS -->
-<section id="projects">
+        <h2 class="section-title">Projects</h2>
 
-  <h2 class="section-title">Testing Projects</h2>
+        <div class="projects-container">
 
-  <div class="projects">
+            <!-- PROJECT 1 -->
+            <div class="project-card">
 
-    <!-- PROJECT 1 -->
-    <div class="project">
+                <h3>Online Shopping Portal</h3>
 
-      <h3>Online Shopping Portal</h3>
+                <p>
+                    Manual testing of an online shopping application to
+                    verify functionality, usability and user experience.
+                </p>
 
-      <p>
-        Manual testing of an e-commerce application to verify
-        functionality and user workflows.
-      </p>
+                <ul>
+                    <li>Prepared test scenarios and test cases</li>
+                    <li>Performed functional testing</li>
+                    <li>Performed regression testing</li>
+                    <li>Identified and reported defects</li>
+                    <li>Verified bug fixes</li>
+                </ul>
 
-      <br>
+            </div>
 
-      <ul>
-        <li>Login & Registration Testing</li>
-        <li>Product Search Testing</li>
-        <li>Cart Testing</li>
-        <li>Checkout Testing</li>
-        <li>Functional Testing</li>
-        <li>Regression Testing</li>
-        <li>Defect Reporting</li>
-      </ul>
 
-    </div>
+            <!-- PROJECT 2 -->
+            <div class="project-card">
 
+                <h3>ShopperStack Application</h3>
 
-    <!-- PROJECT 2 -->
-    <div class="project">
+                <p>
+                    Performed manual testing of an e-commerce application
+                    and identified functional issues.
+                </p>
 
-      <h3>ShopperStack Application</h3>
+                <ul>
+                    <li>Created test scenarios</li>
+                    <li>Executed test cases</li>
+                    <li>Performed different testing types</li>
+                    <li>Reported defects</li>
+                    <li>Retested resolved defects</li>
+                </ul>
 
-      <p>
-        Performed manual testing and identified defects across
-        different application modules.
-      </p>
+            </div>
 
-      <br>
 
-      <ul>
-        <li>Test Scenario Preparation</li>
-        <li>Test Case Execution</li>
-        <li>Functional Testing</li>
-        <li>Smoke Testing</li>
-        <li>Regression Testing</li>
-        <li>Bug Identification</li>
-        <li>Bug Reporting</li>
-      </ul>
+            <!-- PROJECT 3 -->
+            <div class="project-card">
 
-    </div>
+                <h3>JioMart Application Testing</h3>
 
+                <p>
+                    Performed manual testing of an e-commerce application
+                    covering important user flows.
+                </p>
 
-    <!-- PROJECT 3 -->
-    <div class="project">
+                <ul>
+                    <li>Functional testing</li>
+                    <li>UI and usability testing</li>
+                    <li>Test case execution</li>
+                    <li>Defect identification</li>
+                    <li>Regression testing</li>
+                </ul>
 
-      <h3>JioMart Application</h3>
+            </div>
 
-      <p>
-        Tested e-commerce workflows and validated application
-        functionality from a user's perspective.
-      </p>
+        </div>
 
-      <br>
+    </section>
 
-      <ul>
-        <li>Functional Testing</li>
-        <li>UI Testing</li>
-        <li>Smoke Testing</li>
-        <li>Regression Testing</li>
-        <li>Usability Testing</li>
-        <li>Defect Reporting</li>
-      </ul>
 
-    </div>
+    <!-- CERTIFICATIONS -->
+    <section id="certifications">
 
+        <h2 class="section-title">Certifications</h2>
 
-    <!-- PROJECT 4 -->
-    <div class="project">
+        <div class="certifications">
 
-      <h3>REST API Testing</h3>
+            <div class="cert-box">
+                <h3>Software Testing Certification</h3>
+                <p>
+                    Manual Software Testing / Software Testing Training
+                </p>
+            </div>
 
-      <p>
-        API testing using Postman to validate requests,
-        responses and HTTP status codes.
-      </p>
+            <div class="cert-box">
+                <h3>API Testing with Postman</h3>
+                <p>
+                    Hands-on API testing using Postman
+                </p>
+            </div>
 
-      <br>
+        </div>
 
-      <ul>
-        <li>GET Request</li>
-        <li>POST Request</li>
-        <li>PUT Request</li>
-        <li>DELETE Request</li>
-        <li>Status Code Validation</li>
-        <li>Response Validation</li>
-      </ul>
+    </section>
 
-    </div>
 
-  </div>
+    <!-- RESUME -->
+    <section id="resume" class="resume-section">
 
-</section>
+        <h2 class="section-title">Resume</h2>
 
+        <p>
+            Download my latest resume to know more about my skills,
+            projects and testing experience.
+        </p>
 
-<!-- CONTACT -->
-<section id="contact">
+        <a href="resume.pdf" class="btn primary-btn" download>
+            Download Resume
+        </a>
 
-  <h2 class="section-title">Contact Me</h2>
+    </section>
 
-  <div class="contact-box">
 
-    <p>
-      Looking for an opportunity as a Software Tester / Manual Tester.
-    </p>
+    <!-- CONTACT -->
+    <section id="contact">
 
-    <br>
+        <h2 class="section-title">Contact Me</h2>
 
-    <p>
-      <strong>Email:</strong>
-      <a href="mailto:3gashture2004@gmail.com">
-        3gashture2004@gmail.com
-      </a>
-    </p>
+        <div class="contact-container">
 
-    <p>
-      <strong>LinkedIn:</strong>
-      <a
-        href="https://www.linkedin.com/in/gaurav-ashture-087a93237"
-        target="_blank"
-        rel="noopener noreferrer">
-        LinkedIn Profile
-      </a>
-    </p>
+            <div class="contact-item">
+                📧
+                <a href="mailto:3gashture2004@gmail.com">
+                    3gashture2004@gmail.com
+                </a>
+            </div>
 
-    <p>
-      <strong>GitHub:</strong>
-      <a
-        href="https://github.com/3gashture2004"
-        target="_blank"
-        rel="noopener noreferrer">
-        GitHub Profile
-      </a>
-    </p>
+            <div class="contact-item">
+                💼
+                <a
+                    href="https://www.linkedin.com/in/gaurav-ashture-087a93237"
+                    target="_blank"
+                >
+                    LinkedIn Profile
+                </a>
+            </div>
 
-  </div>
+            <div class="contact-item">
+                💻
+                <a
+                    href="https://github.com/3gashture2004"
+                    target="_blank"
+                >
+                    GitHub Profile
+                </a>
+            </div>
 
-</section>
+        </div>
 
+    </section>
 
-<!-- FOOTER -->
-<footer>
-  © 2026 Gaurav Ashture | Software Tester
-</footer>
+
+    <!-- FOOTER -->
+    <footer>
+        © 2026 Gaurav Ashture | Software Tester
+    </footer>
+
 
 </body>
-
+</html>
